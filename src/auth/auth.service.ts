@@ -17,13 +17,13 @@ export class AuthService {
     return  this.jwtService.signAsync(payload);
   }
 
-  async register({name,email,password}:Register){
+  async register({name,email,password,birthDate}:Register){
     const user = await this.userService.findOneByEmail(email);
     if (user) {
       throw new BadRequestException("Email already exists");
     }
     const hashedPassword = await bcryptjs.hash(password,10);
-    await this.userService.create({name,email,password:hashedPassword})
+    await this.userService.create({name,email,birthDate,password:hashedPassword})
     return {
       "message" : "User created successfully"
     };

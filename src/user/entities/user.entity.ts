@@ -18,4 +18,6 @@ export class User {
     password:string;
     @Column({default:"user"})
     role:Roles;
+    @Column()
+    birthDate:Date;
 }

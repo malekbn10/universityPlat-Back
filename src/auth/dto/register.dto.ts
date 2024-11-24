@@ -1,5 +1,5 @@
 import { Transform } from "@nestjs/class-transformer";
-import { IsEmail, IsString, MinLength } from "@nestjs/class-validator";
+import { IsDate, IsEmail, IsString, MinLength } from "@nestjs/class-validator";
 
 
 export class Register {
@@ -12,4 +12,6 @@ export class Register {
     @MinLength(8)
     @Transform(({ value })=> value.trim())
     password:string;
+    @IsDate()
+    birthDate:Date;
 }
