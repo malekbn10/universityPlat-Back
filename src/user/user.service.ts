@@ -30,9 +30,15 @@ export class UserService {
   //   return `This action returns a #${id} user`;
   // }
 
-  // update(id: number, updateUserDto: UpdateUserDto) {
-  //   return `This action updates a #${id} user`;
-  // }
+  async update(id: number, updateUserDto: UpdateUserDto) {
+
+    const user = await this.userRepository.findOneBy({id})
+    if (!user) {
+      console.log("user not found")
+    }
+    console.log(user);
+    return await this.userRepository.update(user,updateUserDto);
+  }
 
   // remove(id: number) {
   //   return `This action removes a #${id} user`;
