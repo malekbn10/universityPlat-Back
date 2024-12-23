@@ -5,6 +5,8 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
+import { FaculteModule } from './faculte/faculte.module';
+import { EventModule } from './event/event.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,7 +18,11 @@ import { JwtModule } from '@nestjs/jwt';
     database: "orientationplat",
     autoLoadEntities: true,
     synchronize: true,
-    }),UserModule, AuthModule],
+    entities:[
+      __dirname + "entities/**/*.entity.ts"
+
+    ]
+    }),UserModule, AuthModule, FaculteModule, EventModule],
   controllers: [AppController],
   providers: [AppService],
 })

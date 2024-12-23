@@ -31,6 +31,8 @@ export class AuthService {
 
   async login({email , password}:Login){
     const user = await this.userService.findOneByEmail(email);
+    console.log(user);
+    
     if (!user) {
       throw new UnauthorizedException("Invalid email");
   }
@@ -38,12 +40,11 @@ export class AuthService {
   if (!isPasswordValid) {
       throw new UnauthorizedException("Invalid password");
   }
-  const payload = {email : user.email}
+  const payload = {email : user.email , name:user.name , role:user.role}
   const token=await this.generateJwt(payload)
-  // const token = await this.jwtService.signAsync(payload,{secret:jwtConstants.secret})
   return {
-      token : token,
-      email : user.email
+      "token" : token,
+      "name" : user.name,
   };
   }
 }
