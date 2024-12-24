@@ -31,7 +31,6 @@ export class AuthService {
 
   async login({email , password}:Login){
     const user = await this.userService.findOneByEmail(email);
-    console.log(user);
     
     if (!user) {
       throw new UnauthorizedException("Invalid email");

@@ -6,5 +6,7 @@ export class CreateEventDto {
     @IsDate()
     eventDate:Date;
     description:string;
+    location:string;
+
 
 }

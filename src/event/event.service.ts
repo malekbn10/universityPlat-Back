@@ -15,7 +15,7 @@ export class EventService {
   }
 
   async findAll() {
-    return await this.eventRepository.find();
+    return await this.eventRepository.findAndCount();
   }
 
   // findOne(id: number) {

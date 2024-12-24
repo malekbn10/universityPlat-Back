@@ -11,4 +11,6 @@ export class Event {
         eventDate:Date;
         @Column()
         description:string;
+        @Column()
+        location:string;
 }
